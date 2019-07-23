@@ -1,0 +1,17 @@
+<h1>Latest Changes</h1>
+<table>
+<tr><th>Model</th><th>RFID</th><th>Serial</th><th>Location</th><th>HR Holder</th><th>Updated</th><th>Created</th>
+<% for item in @items %>
+    <tr>
+      <td><%= link_to item.model.name, item.model %></td> 
+      <td><%= link_to item.rfid, item %></td>
+      <td><%=item.serialNum %></td>
+      <td><%= link_to item.location.name, item.location %></td>
+			<td><%= link_to item.hrholder.name, item.hrholder %></td>
+      <td><%= item.updated_at.strftime('%d %h, %Y %H:%M')%></td>
+			<td><%= item.created_at.strftime('%d %h, %Y %H:%M')%></td>
+    </tr>
+		<tr><td></td><td colspan='6'><%= item.comment %></td></tr>
+  <% end %>
+</table>
+<%= will_paginate @items %>

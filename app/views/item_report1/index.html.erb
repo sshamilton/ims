@@ -1,0 +1,20 @@
+<h1>ItemReport1#index</h1>
+
+<p> Hopefully a new view is below</p>
+
+
+
+<table>
+  <tr>
+    <th>Name of Make</th>
+    <th>Category</th>
+  </tr>
+  <% for cat in @categories %>
+      <tr>
+         <td> <%=h cat.categoryName %></td>
+         <td> <%=h cat.numitems[cat.id] %> </td>
+      </tr>
+  <% end %>
+
+
+</table>

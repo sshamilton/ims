@@ -1,0 +1,32 @@
+<% title "States" %>
+
+<table>
+  <tr>
+    <th>Item</th>
+    <th>Accountedfor</th>
+    <th>Missioncapable</th>
+    <th>Disposed</th>
+    <th>Dateupdated</th>
+
+  </tr>
+  <% for state in @states %>
+      <tr>
+        <td><%=h link_to state.item.rfid, state %></td>
+        <td><%=h state.accountedFor %></td>
+        <td><%=h state.missionCapable %></td>
+        <td><%=h state.disposed %></td>
+        <td><%=h state.dateUpdated %></td>
+
+        <% if (can? :edit, State) %>
+            <td><%= link_to "Edit", edit_state_path(state) %></td>
+        <% end %>
+        <% if (can? :delete, State) %>
+            <td><%= link_to "Destroy", state, :confirm => 'Are you sure?', :method => :delete %></td>
+        <% end %>
+      </tr>
+  <% end %>
+</table>
+
+<% if (can? :create, State) %>
+    <p><%= link_to "New State", new_state_path %></p>
+<% end %>

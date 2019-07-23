@@ -1,0 +1,27 @@
+<% title "Profiles" %>
+
+<table>
+  <tr>
+    <th>Lastname</th>
+    <th>Firstname</th>
+    <th>Rank</th>
+    <th>Department</th>
+  </tr>
+  <% for profile in @profiles %>
+      <tr>
+        <td><%=h link_to profile.lastName, profile %></td>
+        <td><%=h profile.firstName %></td>
+        <td><%=h profile.rank %></td>
+        <td><%=h Department.find_by_id(profile.department_id).name %></td>
+        <% if (can? :edit, Profile) %>
+            <td><%= link_to "Edit", edit_profile_path(profile) %></td>
+        <% end %>
+        <% if (can? :delete, Profile) %>
+            <td><%= link_to "Destroy", profile, :confirm => 'Are you sure?', :method => :delete %></td>
+        <% end %>
+      </tr>
+  <% end %>
+</table>
+<% if (can? :create, Profile) %>
+    <p><%= link_to "New Profile", new_profile_path %></p>
+<% end %>

@@ -1,0 +1,9 @@
+one:
+  kitName: MyString
+  item_id: 1
+  kitDescription: MyText
+
+two:
+  kitName: MyString
+  item_id: 1
+  kitDescription: MyText

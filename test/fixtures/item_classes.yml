@@ -1,0 +1,9 @@
+one:
+  make: MyString
+  model: MyString
+  classDescription: MyText
+
+two:
+  make: MyString
+  model: MyString
+  classDescription: MyText

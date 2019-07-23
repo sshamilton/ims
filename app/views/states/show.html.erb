@@ -1,0 +1,44 @@
+<% title "State" %>
+
+<p>
+  <strong>Accountedfor:</strong>
+  <%=h @state.accountedFor %>
+</p>
+<p>
+  <strong>Missioncapable:</strong>
+  <%=h @state.missionCapable %>
+</p>
+<p>
+  <strong>Beingrepaired:</strong>
+  <%=h @state.beingRepaired %>
+</p>
+<p>
+  <strong>Beingcalibrated:</strong>
+  <%=h @state.beingCalibrated %>
+</p>
+<p>
+  <strong>Disposed:</strong>
+  <%=h @state.disposed %>
+</p>
+<p>
+  <strong>Current Value:</strong>
+  <%=h @state.currentValue %>
+</p>
+<p>
+  <strong>Dateupdated:</strong>
+  <%=h @state.dateUpdated %>
+</p>
+<p>
+  <strong>Item:</strong>
+  <%=h @state.item.rfid %>
+</p>
+
+<p>
+  <% if (can? :edit, State) %>
+      <%= link_to "Edit", edit_state_path(@state) %> |
+  <% end %>
+  <% if (can? :delete, State) %>
+      <%= link_to "Destroy", @state, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>
+  <%= link_to "View All", states_path %>
+</p>

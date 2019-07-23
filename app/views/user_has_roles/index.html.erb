@@ -1,0 +1,23 @@
+<% title "User Has Roles" %>
+
+<table>
+  <tr>
+    <th>User</th>
+    <th>Role</th>
+  </tr>
+  <% for user_has_role in @user_has_roles %>
+      <tr>
+        <td><%=h link_to user_has_role.user.name, user_has_role %></td>
+        <td><%=h user_has_role.role.name %></td>
+        <% if (can? :edit, UserHasRole) %>
+            <td><%= link_to "Edit", edit_user_has_role_path(user_has_role) %></td>
+        <% end %>
+        <% if (can? :delete, UserHasRole) %>
+            <td><%= link_to "Destroy", user_has_role, :confirm => 'Are you sure?', :method => :delete %></td>
+        <% end %>
+      </tr>
+  <% end %>
+</table>
+<% if (can? :create, UserHasRole) %>
+    <p><%= link_to "New User Has Role", new_user_has_role_path %></p>
+<% end %>

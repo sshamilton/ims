@@ -1,0 +1,26 @@
+<% title "Make _ Categories" %>
+
+<table>
+  <tr>
+    <th>Make</th>
+    <th>Category</th>
+  </tr>
+
+
+  <% for mac in @make_categories %>
+      <tr>
+
+        <td><%=h link_to  mac.make.name, mac   %></td>
+        <td><%=h mac.category.name   %></td>
+        <% if (can? :edit, MakeCategory) %>
+            <td><%= link_to "Edit", edit_make_category_path(mac) %></td>
+        <% end %>
+        <% if (can? :destroy, MakeCategory) %>
+            <td><%= link_to "Destroy", mac, :confirm => 'Are you sure?', :method => :delete %></td>
+        <% end %>
+      </tr>
+  <% end %>
+</table>
+<% if (can? :create, MakeCategory) %>
+    <p><%= link_to "New Make _ Category", new_make_category_path %></p>
+<% end %>

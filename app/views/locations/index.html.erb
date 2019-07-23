@@ -1,0 +1,24 @@
+<% title "Locations" %>
+
+<table>
+  <tr>
+    <th>Location</th>
+    <th># of Items</th>
+  </tr>
+  <% for location in @locations %>
+      <tr>
+				
+        <td><%=h link_to location.roomNum, location %></td>
+	<td><%=location.items.count %>
+        <% if (can? :edit, Location) %>
+            <td><%= link_to "Edit", edit_location_path(location) %></td>
+        <% end %>
+        <% if (can? :destroy, Location) %>
+            <td><%= link_to "Destroy", location, :confirm => 'Are you sure?', :method => :delete %></td>
+        <% end %>
+      </tr>
+  <% end %>
+</table>
+<% if (can? :create, Location) %>
+    <p><%= link_to "New Location", new_location_path %></p>
+<% end %>

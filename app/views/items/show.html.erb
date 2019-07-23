@@ -1,0 +1,98 @@
+<% title "Item" %>
+<p id="notice"><%= notice %></p>
+<p>
+  <%# link_to image_tag(@item.photo.url(:small)), "/eecsims" + @item.photo.url %>
+  <!--Above taken out due to no use for it anymore -->
+  <%= link_to image_tag(@item.model.photo.url(:small)), "/eecsims" + @item.model.photo.url %><br />
+
+</p>
+<p>
+  <strong>RFID:</strong>
+  <%=h @item.rfid %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%=link_to @item.model.category.categoryName,  @item.model.category %>
+</p>
+<p>
+  <strong>Make:</strong>
+  <%=link_to @item.model.make.makeName, @item.model.make %>
+</p>
+<p>
+  <strong>Model:</strong>
+  <%=link_to @item.model.modelName,  @item.model %>
+</p>
+<p>
+  <strong>Serial Number:</strong>
+  <%=h @item.serialNum %>
+</p>
+<p>
+  <strong>Barcode:</strong>
+  <%=h @item.barcode %>
+</p>
+<p>
+  <strong>Location:</strong>
+  <%=link_to @item.location.name, @item.location %>
+</p>
+<p>
+  <strong>Year Acquired:</strong>
+  <%=h @item.dateAcquired %>
+</p>
+<p>
+  <strong>Price:</strong>
+  <%=h @item.price %>
+</p>
+<p>
+  <strong>Computer Name:</strong>
+  <%=h @item.computername %>
+</p>
+
+<p>
+<strong>HR Holder:</strong>
+ <%= link_to @item.hrholder.name, @item.hrholder %></td></tr>
+</p>
+
+
+<p>
+  <strong>PB LIN:</strong>
+  <%=h @item.pbhr %>
+</p>
+
+
+<p>
+  <strong>Last Calibration:</strong>
+  <%=h @item.lastcal %>
+</p>
+<p>
+  <strong>Calibration Due:</strong>
+  <%=h @item.caldue %>
+</p>
+
+<p>
+  <strong>Comment:</strong>
+  <%=h @item.comment %>
+</p>
+<p>
+  <strong>Record Added:</strong>
+  <%=h @item.created_at.strftime('%d %h, %Y %H:%M') %>
+</p>
+zzzz
+<p>
+  <strong>Last Updated:</strong>
+  <%=h @item.updated_at.strftime('%d %h, %Y %H:%M') %>
+</p>
+<p>
+  <strong>End Of Life</strong>
+  <%=h @item.end_of_life %>
+</p>
+<p>
+  <% if (can? :edit, Item) %>
+  <%= link_to "Edit", edit_item_path(@item) %> |
+  <% end %>
+  <% if (can? :destroy, Item) %>
+  <%= link_to "Destroy", @item, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>
+  <%= link_to "View All", items_path %>
+
+</p>

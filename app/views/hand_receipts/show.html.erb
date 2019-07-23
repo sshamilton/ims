@@ -1,0 +1,28 @@
+<% title "Hand Receipt" %>
+
+<p>
+  <strong>Item:</strong>
+  <%=h @hand_receipt.item.name %>
+</p>
+<p>
+  <strong>User:</strong>
+  <%=h @hand_receipt.user.name %>
+</p>
+<p>
+  <strong>Dateissued:</strong>
+  <%=h @hand_receipt.dateIssued %>
+</p>
+<p>
+  <strong>Datereturned:</strong>
+  <%=h @hand_receipt.dateReturned %>
+</p>
+
+<p>
+  <% if (can? :edit, HandReceipt) %>
+  <%= link_to "Edit", edit_hand_receipt_path(@hand_receipt) %> |
+      <% end %>
+      <% if (can? :destroy, HandReceipt) %>
+  <%= link_to "Destroy", @hand_receipt, :confirm => 'Are you sure?', :method => :delete %> |
+       <% end %>
+  <%= link_to "View All", hand_receipts_path %>
+</p>

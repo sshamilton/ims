@@ -1,0 +1,17 @@
+one:
+  accountedFor: false
+  missionCapable: false
+  beingRepaired: false
+  beingCalibrated: false
+  disposed: false
+  dateUpdated: 2010-11-12
+  originalValue: 1.5
+
+two:
+  accountedFor: false
+  missionCapable: false
+  beingRepaired: false
+  beingCalibrated: false
+  disposed: false
+  dateUpdated: 2010-11-12
+  originalValue: 1.5

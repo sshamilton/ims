@@ -1,0 +1,19 @@
+<% title "Categories" %>
+
+<%= form_tag categories_path, :method => 'get', :id => "item_search" do %>
+    <p>Description: 
+      <%= text_field_tag :search, params[:search] %>
+      <%# submit_tag "Search for items by RFID", :name => nil %>
+      
+    </p>
+<% end %>
+<% if (can? :create, Category) %>
+<p><%= link_to "New Category", new_category_path %></p>
+<% end %>
+
+
+<div id="items"><%= render 'items' %></div>
+
+
+ 
+

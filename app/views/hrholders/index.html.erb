@@ -1,0 +1,27 @@
+<h1>Hand Receipt Holders</h1>
+<% if (can? :create, Hrholder) %>
+<%= link_to 'New Hrholder', new_hrholder_path %>
+<% end %>
+<table>
+  <tr>
+    <th>Name (<%= @hrholders.count %>)</th>
+	<th># of Items (<%= Hrholder.find(:all, :joins => [:items]).count %>)</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @hrholders.each do |hrholder| %>
+  <tr >
+    <td><%= link_to hrholder.name, hrholder %></td>
+	<td><%= hrholder.items.count %></td>
+    <td style="padding-left: 15px"><%= link_to 'CSV Export', hrholder_path(hrholder, :format=> :csv) %></td>
+    <td style="padding-left: 15px"><%= link_to 'Pictures', picture_hrholder_path(hrholder) %></td>
+    <td style="padding-left: 15px"><%= link_to 'Edit', edit_hrholder_path(hrholder) %></td>
+    <td style="padding-left: 15px"><%= link_to 'Delete', hrholder, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+

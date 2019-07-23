@@ -1,0 +1,22 @@
+<% form_for @category do |f| %>
+ <% if @category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@person.errors.count, "error") %> prohibited this person from being saved:</h2>
+
+      <ul>
+      <% @person.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    Before creating a new Category, make sure that a similar category does not already exist. <br>
+    EXAMPLE: Don't create a "Laptop" category because the category, "Computer, Laptop" already exists.<br> 
+  <p>
+    <%= f.label :categoryName %><br />
+    <%= f.text_field :categoryName %>
+  </p>
+  <p><%= f.submit %></p>
+
+    
+<% end %>

@@ -1,0 +1,20 @@
+<% title "Make Has Category" %>
+
+<p>
+  <strong>Make:</strong>
+  <%=h @make_category.make.name %>
+</p>
+<p>
+  <strong>Category:</strong>
+  <%=h @make_category.category.name  %>
+</p>
+
+<p>
+  <% if (can? :edit, MakeCategory) %>
+      <%= link_to "Edit", edit_make_category_path(@make_category) %> |
+  <% end %>
+  <% if (can? :edit, MakeCategory) %>
+      <%= link_to "Destroy", @make_category, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>
+  <%= link_to "View All", make_categories_path %>
+</p>

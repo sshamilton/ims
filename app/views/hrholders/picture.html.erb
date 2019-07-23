@@ -1,0 +1,50 @@
+<h1>Hand Receipt with Photos</h1>
+<h2>H/R Holder: <%= @hrholder.name %></h2>
+
+<% item_count = 0 %>
+<% name = "" %>
+<% model = "" %>
+<% make = "" %>
+
+<table border=2 ><tr><th>Name</th><th>Count</th><th>Location</th><th>Make</th><th>Model</th></tr>
+<% @items.each do |item| %>
+  <% if item_count == 25 %>
+ 
+   <tr class='pagebreak'></tr>
+   <tr><td colspan='8'></td></tr>
+   <tr><th>Name</th><th>Count</th><th>Location</th><th>Make</th><th>Model</th></tr>
+   <% model = "" %>
+   <% name = "" %>
+   <% item_count = 0 %>
+  <% end %>
+  <% item_count = item_count + 1 %>
+<% if model != item.model.name %>
+	<tr>
+	 	<% if name != item.model.category.categoryName %>
+		 <td><%= item.model.category.categoryName %></td>
+		 <td><%= @items.joins(:model).where('models.category_id=' + item.model.category_id.to_s + ' and location_id = ' + item.location_id.to_s).count %>
+		 <td><%= item.location.roomNum %></td>
+		 <% name = item.model.category.categoryName %>
+		<% else %>
+		<td></td><td></td><td></td>
+		<% end %>
+		<% if make != item.model.make.makeName %>
+		  <td><%= item.model.make.makeName %></td>
+	 	  <% make = item.model.make.makeName %>
+		<% else %>
+		  <td></td>
+		<% end %>
+		
+		  <td><%= link_to image_tag(item.model.photo.url(:small)), "/eecsims" + item.model.photo.url %><br /><%= item.model.name %></td>
+		   <% model = item.model.name %>
+		
+
+	</tr>
+<% end %>
+<% end %>
+
+</table>
+<hr>
+<br /><br /><br /><br /><br />
+_____________________________________________________________________________<br />
+<%= @hrholder.name %>

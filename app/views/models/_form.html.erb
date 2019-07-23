@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>
+
+<% form_for @model, :html => { :multipart => true } do |f| %>
+  <% if @model.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@model.errors.count, "error") %> prohibited this model from being saved:</h2>
+
+      <ul>
+      <% @model.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+ 
+	  <p>Model: <%= f.text_field :modelName%></p>
+
+	  <p>Make: <% @makes = Make.find(:all, :order => 'makeName') %>
+		<%= f.collection_select(:make_id, @makes, :id, :name) %></p>
+		
+		<p>Name: <% @categories = Category.find(:all, :order => 'categoryName') %>
+		<%= f.collection_select(:category_id, @categories, :id, :name) %></p>
+		
+       		<p>Upload Photo:     <%= f.file_field :photo %>  </p>
+  <p><%= f.submit "Submit" %></p>
+  <% end %>

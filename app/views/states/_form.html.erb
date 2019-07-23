@@ -1,0 +1,17 @@
+<% semantic_form_for @state do |f| %>
+  <%= f.error_messages %>
+  <% f.inputs do %>
+       <%= f.input :accountedFor %>
+       <%= f.input :missionCapable %>
+       <%= f.input :beingRepaired %>
+       <%= f.input :beingCalibrated %>
+       <%= f.input :disposed %>
+       <%= f.input :dateUpdated %>
+       <%= f.input :currentValue %>
+       <%= f.input :item %>
+
+
+    <% end %>
+     <%= f.buttons %>
+<% end %>
+

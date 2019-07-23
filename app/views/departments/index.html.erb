@@ -1,0 +1,23 @@
+<% title "Departments" %>
+
+<table>
+  <tr>
+    <th>Department</th>
+    <th>Location</th>
+  </tr>
+  <% for department in @departments %>
+    <tr>
+      <td><%=h link_to department.departmentName, department %></td>
+      <td><%=h Location.find_by_id(department.location_id).name %></td>
+      <% if (can? :edit, Department) %>
+         <td><%= link_to "Edit", edit_department_path(department) %></td>
+      <% end %>
+      <% if (can? :delete, Department) %>
+         <td><%= link_to "Destroy", department, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table>
+ <% if (can? :create, Department) %>
+<p><%= link_to "New Department", new_department_path %></p>
+<% end %>

@@ -1,0 +1,29 @@
+<% title "Profile" %>
+
+<p>
+  <strong>Lastname:</strong>
+  <%=h @profile.lastName %>
+</p>
+<p>
+  <strong>Firstname:</strong>
+  <%=h @profile.firstName %>
+</p>
+<p>
+  <strong>Rank:</strong>
+  <%=h @profile.rank %>
+</p>
+
+<p>
+  <strong>Department:</strong>
+  <%=h Department.find_by_id(@profile.department_id).name %>
+</p>
+
+<p>
+  <% if (can? :edit, Profile) %>
+      <%= link_to "Edit", edit_profile_path(@profile) %> |
+  <% end %>
+  <% if (can? :delete, Profile) %>
+      <%= link_to "Destroy", @profile, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>
+  <%= link_to "View All", profiles_path %>
+</p>

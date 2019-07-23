@@ -1,0 +1,42 @@
+<% title "Location" %>
+
+
+<p>
+  <strong>Room Number:</strong>
+  <%=h @location.roomNum %>
+</p>
+
+
+<p>
+  <% if (can? :edit, Location) %>
+      <%= link_to "Edit", edit_location_path(@location) %> |
+  <% end %>
+  <% if (can? :edit, Location) %>
+      <%= link_to "Destroy", @location, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>
+  <%= link_to "View All", locations_path %>
+</p>
+
+<table border=1>
+  <tr>
+		<th>HR Holder</th>
+    <th>Model</th>
+    <th>Make</th>
+    <th>Description</th>
+    <th>RFID</th>
+
+  </tr>
+	<% @items = @location.items.find(:all, :include => [:hrholder], :order => 'hrholders.name') %>
+
+  <% for item in @items %>
+    <tr>
+      <td><%= link_to item.hrholder.name, item.hrholder %>
+      <td><%=link_to item.model.name, item.model %></td> 
+			<td><%=link_to item.model.make.name, item.model.make %></td> 
+			<td><%=link_to item.model.category.name, item.model.category %></td> 
+      <td><%=link_to item.rfid, item %></td>
+ 
+    </tr>
+  <% end %>
+</table>
+

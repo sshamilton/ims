@@ -1,0 +1,7 @@
+one:
+  departmentName: MyString
+  location_id: 1
+
+two:
+  departmentName: MyString
+  location_id: 1

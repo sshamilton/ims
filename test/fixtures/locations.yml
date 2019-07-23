@@ -1,0 +1,9 @@
+one:
+  buildingNum: MyString
+  roomNum: MyString
+  locationDescription: MyText
+
+two:
+  buildingNum: MyString
+  roomNum: MyString
+  locationDescription: MyText

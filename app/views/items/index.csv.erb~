@@ -1,0 +1,2 @@
+<% @item = Item.first %>
+<%= Item.csvofitems.html_safe %>8490

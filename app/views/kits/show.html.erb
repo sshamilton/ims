@@ -1,0 +1,24 @@
+<% title "Kit" %>
+
+<p>
+  <strong>Kitname:</strong>
+  <%=h @kit.kitName %>
+</p>
+<p>
+  <strong>Item:</strong>
+  <%=h @kit.item_id %>
+</p>
+<p>
+  <strong>Kitdescription:</strong>
+  <%=h @kit.kitDescription %>
+</p>
+
+<p>
+  <% if (can? :edit, Kit) %>
+      <%= link_to "Edit", edit_kit_path(@kit) %> |
+  <% end %>
+  <% if (can? :edit, Kit) %>
+      <%= link_to "Destroy", @kit, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>
+  <%= link_to "View All", kits_path %>
+</p>

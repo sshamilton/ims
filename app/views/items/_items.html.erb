@@ -1,0 +1,28 @@
+<table border=1>
+  <tr>
+    <th>Model</th>
+    <th>RFID</th>
+
+    <th>Serial Number</th>
+		<th>Barcode</th>
+
+    <th>Location</th>
+
+
+  </tr>
+  <% for item in @items %>
+    <tr>
+      <td><%= link_to item.model.name, item.model %></td> 
+      <td><%= link_to item.rfid, item %></td>
+      <td><%=item.serialNum %></td>
+      <td><%=item.barcode %></td>
+      <td><%= link_to item.location.name, item.location %></td>
+      <% if (can? :edit, Item) %>
+      <td><%= link_to "Edit", edit_item_path(item) %></td>
+      <% end %>
+      <% if (can? :destroy, Item) %>
+      <td><%= link_to "Destroy", item, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
+    </tr>
+  <% end %>
+</table> <%= will_paginate @items %>

@@ -1,0 +1,21 @@
+one:
+  rfid: 1
+  dateAcquired: 2010-11-12
+  itemName: MyString
+  serialNum: MyString
+  itemDescription: MyText
+  barcode: MyString
+  originalValue: 1.5
+  itemClass_id: 1
+  location_id: 1
+
+two:
+  rfid: 1
+  dateAcquired: 2010-11-12
+  itemName: MyString
+  serialNum: MyString
+  itemDescription: MyText
+  barcode: MyString
+  originalValue: 1.5
+  itemClass_id: 1
+  location_id: 1

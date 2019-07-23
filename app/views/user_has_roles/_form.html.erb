@@ -1,0 +1,10 @@
+<% semantic_form_for @user_has_role do |f| %>
+    <%= f.error_messages %>
+   <% f.inputs do %>
+      <%= f.input :user %>
+      <%= f.input :role %>
+    <% end %>
+    <%= f.buttons %>
+  <% end %>
+
+ 

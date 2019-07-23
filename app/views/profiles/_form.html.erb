@@ -1,0 +1,16 @@
+<% semantic_form_for @profile do |f| %>
+
+    <%= f.error_messages %>
+   <% f.inputs do %>
+      <%= f.input :lastName %>
+      <%= f.input :firstName %>
+      <%= f.input :rank %>
+      <%= f.input :department %>
+      <%= f.input :user %>
+    <% end %>
+    <%= f.buttons %>
+  <% end %>
+
+
+
+  

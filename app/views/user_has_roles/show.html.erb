@@ -1,0 +1,21 @@
+<% title "User Has Role" %>
+
+<p>
+  <strong>User:</strong>
+  <%=h @user_has_role.user.name %>
+</p>
+<p>
+  <strong>Role:</strong>
+  <%=h @user_has_role.role.name %>
+</p>
+
+<p>
+  <% if (can? :edit, UserHasRole) %>
+      <%= link_to "Edit", edit_user_has_role_path(@user_has_role) %> |
+  <% end %>
+
+  <% if (can? :edit, UserHasRole) %>
+      <%= link_to "Destroy", @user_has_role, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>
+  <%= link_to "View All", user_has_roles_path %>
+</p>

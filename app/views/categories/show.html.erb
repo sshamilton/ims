@@ -1,0 +1,30 @@
+<% title "Description" %>
+ 
+<p>
+  <strong>Description:</strong>
+  <%=h @category.categoryName %>
+</p>
+
+<p>
+     <% if (can? :edit, Category) %>
+    <%= link_to "Edit Description", edit_category_path(@category) %>
+
+      <% end %>
+      <% if (can? :delete, Category) %>
+     <%= button_to "Delete description", @category, :confirm => 'Are you sure?', :method => :delete %>
+
+      <% end %>
+<table border=1><th>Make</th><th>Model</th><th># of Items</th><th>Grand Total: <%= @category.models.find(:all, :joins => [:make]).count %></th>
+<% @models = @category.models.find(:all, :joins => [:make], :order => 'makes.makeName, modelName') %>
+  <% for model in @models %>
+    <tr>
+     <td><%= link_to model.make.makeName, model.make %></td>
+	   <td><%= link_to model.name, model %></td>
+   
+    <td><%= model.items.count %></td>
+	</tr>
+  <% end %>
+</table>
+	  
+  <%= link_to "Back to Home", categories_path %>
+</p>

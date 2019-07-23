@@ -1,0 +1,27 @@
+<% title "Kits" %>
+
+<table>
+  <tr>
+    <th>Kitname</th>
+    <th>Item</th>
+    <th>Kitdescription</th>
+  </tr>
+  <% for kit in @kits %>
+      <tr>
+        <td><%=h kit.kitName %></td>
+        <td><%=h kit.item_id %></td>
+        <td><%=h kit.kitDescription %></td>
+
+        <td><%= link_to "Show", kit %></td>
+        <% if (can? :edit, Kit) %>
+            <td><%= link_to "Edit", edit_kit_path(kit) %></td>
+        <% end %>
+        <% if (can? :destroy, Kit) %>
+            <td><%= link_to "Destroy", kit, :confirm => 'Are you sure?', :method => :delete %></td>
+        <% end %>
+      </tr>
+  <% end %>
+</table>
+<% if (can? :create, Kit) %>
+<p><%= link_to "New Kit", new_kit_path %></p>
+<% end %>

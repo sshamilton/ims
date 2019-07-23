@@ -1,0 +1,14 @@
+<%= form_for :upload, :html => { :multipart => true } do |f| %>
+Note: Column titles are not used, data is copied by column placement.  
+<br/>
+Make, Name, model, and Location are required to be in the database for a successful import.
+<br />
+
+Upload format is:
+<pre>
+id,name,location,last,state,stateLast,barcode,make,model,serial_num,h/r holder,comments,computer name,last cal,cal due,acq date,price $,PB HR/LIN,HR signed
+IF2203447334C31000003A3C,SMART PHONE,CS Program,1/16/2011 10:19,Found,Unknown,354957000,Google,PB99100 NEXUS ONE,354957000,"Jacoby, G",,,,,2011,682.89,,4/7/2011
+</pre>
+    <%= f.file_field :csv %>
+    <%= f.submit "Upload", :disable_with => "Uploading..." %>
+<% end -%>

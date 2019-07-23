@@ -1,0 +1,41 @@
+<% title "Model" %>
+<p>
+  <%= link_to image_tag(@model.photo.url(:small)), "/eecsims" + @model.photo.url %>
+  <%# link_to image_tag(@model.photo.url(:small)),   @model.photo.url %>
+</p>
+<p>
+  <strong>Modelname:</strong>
+  <%=h @model.modelName %>
+</p>
+<p>
+  <strong>Make:</strong>
+  <%=h @model.make.name %>
+</p>
+<p>
+  <strong>Category:</strong>
+  <%=h @model.category.name %>
+</p>
+
+<table border=1><th>RFID</th><th>Serial Number</th><th>Location</th>
+
+ 
+<% @items = @model.items.paginate :page => params[:page],:joins => [:location], :order => 'locations.roomNum, rfid' %>
+  <% for item in @items %>
+    <tr>
+	<td><%= link_to item.rfid, item %></td>
+	<td><%= item.serialNum %></td>
+    <td><%= link_to item.location.name, item.location %></td>
+	</tr>
+  <% end %>
+</table>
+ <%= will_paginate @items %>
+<p>
+  <% if (can? :edit, Model) %>
+      <%= link_to "Edit", edit_model_path(@model) %> |
+  <% end %>
+
+  <% if (can? :delete, Model) %>
+      <%= link_to "Destroy", @model, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>
+  <%= link_to "View All", models_path %>
+</p>

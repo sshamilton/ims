@@ -1,0 +1,25 @@
+<% title "Items" %>
+<% form_for @search  do |f| %>
+  <table><tr>
+      <td><%= f.label :rfid_contains, "RFID" %></td>
+			<td>      <%= f.text_field :rfid_contains %></td>
+		</tr>
+		<tr>      
+      <td><%= f.label :barcode_contains, "Barcode: " %></td>
+      <td><%= f.text_field :barcode_contains %></td>
+  	</tr>
+		<tr>
+      <td><%= f.label :serialNum_contains, "Serial Number: " %></td>
+      <td><%= f.text_field :serialNum_contains %></td>
+    </tr>  
+    </p>
+	</table>
+   
+<% end %>
+
+<div id="items"><%= render 'items' %></div>
+
+
+<% if (can? :create, Item) %>  
+<p><%= link_to "New Item", new_item_path %></p>
+<% end %>

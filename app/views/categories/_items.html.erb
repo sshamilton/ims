@@ -1,0 +1,19 @@
+<table>
+  <tr>
+    <th>Description (<%= Category.all.count %>)</th><th>Total (<%= Category.find(:all, :joins => [:items]).count %>)</th> 
+  </tr>
+  <% for category in @categories %>
+    <tr>
+      <td><%=h link_to category.categoryName, category %></td>
+	  <td><%=h category.items.count %></td>
+      <% if (can? :edit, Category) %>
+      <td><%= link_to "Edit", edit_category_path(category) %></td>
+      <% end %>
+      <% if (can? :delete, Category) %>
+      <td><%= link_to "Delete", category, :confirm => 'Are you sure?', :method => :delete %></td>
+      <% end %>
+    </tr>
+  <% end %>
+
+  </table>
+   <%= will_paginate @categories %>

@@ -1,0 +1,95 @@
+<p id="notice"><%= notice %></p>
+
+<% form_for @item, :html => { :multipart => true } do |f| %>
+  <% if @item.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item.errors.count, "error") %> prohibited this item from being saved:</h2>
+
+      <ul>
+      <% @item.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+    
+<%= stylesheet_link_tag 'chain_selects' %>
+
+    
+      <p>
+    RFID<br />
+    <%= f.text_field :rfid %>
+  </p>
+    <p>
+    Year Acquired <br />
+    <%= f.text_field :dateAcquired, :maxlength => 4 %>
+  </p>
+  <p>
+    <%= f.label :serialNum %><br />
+    <%= f.text_field :serialNum %>
+  </p>
+  <p>
+    <%= f.label :barcode %><br />
+    <%= f.text_field :barcode %>
+  </p>
+  <p>
+    <%= f.label :itemstate %><br />
+    <%= f.text_field :itemstate %>
+  </p>
+    <p>
+    <%= f.label :stateLast %><br />
+    <%= f.text_field :stateLast %>
+  </p>
+  <p>
+    Computer Name (If Applicable)<br />
+    <%= f.text_field :computername %>
+  </p>
+    <p>
+    Last Calibration:<br />
+    <%= f.date_select include_blank.:lastcal %>
+  </p>
+  <p>
+    Calibration Due:<br />
+    <%= f.date_select include_blank.:caldue %>
+  </p>
+    <p>
+    Price:<br />
+    <%= f.text_field :price %>
+  </p>
+    <p>
+    PB LIN:<br />
+    <%= f.text_field :pbhr %>
+  </p>
+  <p>
+    <%= f.label :originalValue %><br />
+    <%= f.text_field :originalValue %>
+  </p>
+                 <p>
+     <%#= f.label :model_id %>
+                   <%= @models = Model.find(:all)
+                           f.collection_select( :model_id, @models, :id, :name , options ={:prompt =>"Select a Model"})%>
+
+         <%#= @item.model_id %>
+        <%# chain_select_ajax(:models => [:category, :make, :model],  :prefix => 'item') %>
+
+</p> 
+  <p>
+
+<%= @locations = Location.find(:all)
+        f.collection_select( :location_id, @locations, :id, :name , options ={:prompt =>"Select a Location"})%>
+  </p>
+ <p>    <%= f.file_field :photo %>  </p>
+    <p>
+    <%= f.label :comment %><br />
+    <%= f.text_area :comment %>
+  </p>
+	
+	<p><%= f.submit "Submit" %></p>
+
+  
+
+
+  <% end %>
+
+
+<%# :values => {:category => 30, :make => @item.model.make_id, :model => @item.model_id},%>

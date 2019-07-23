@@ -1,0 +1,7 @@
+one:
+  roleName: MyString
+  roleDescription: MyText
+
+two:
+  roleName: MyString
+  roleDescription: MyText

@@ -1,0 +1,28 @@
+<% title "Models" %>
+<% if (can? :create, Model) %>
+    <p><%= link_to "New Model", new_model_path %></p>
+<% end %>
+<table>
+  <tr>
+    <th>Models (<%= Model.all.count %>)</th>
+    <th>Make</th>
+    <th>Description</th>
+    <th>Total (<%= Model.find(:all, :joins => [:items]).count %>)</th>
+  </tr>
+  <% for model in @models %>
+      <tr>
+        <td><%=link_to model.modelName, model %></td>
+        <td><%=link_to model.make.name, model.make %></td>
+        <td><%=link_to model.category.name, model.category %></td>
+	<td><%=model.items.count %></td>
+        <% if (can? :edit, Model) %>
+            <td><%= link_to "Edit", edit_model_path(model) %></td>
+        <% end %>
+        <% if (can? :delete, Model) %>
+            <td><%= link_to "Destroy", model, :confirm => 'Are you sure?', :method => :delete %></td>
+        <% end %>
+      </tr>
+  <% end %>
+</table>
+<%= will_paginate @models %>
+

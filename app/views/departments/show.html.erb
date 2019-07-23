@@ -1,0 +1,20 @@
+<% title "Department" %>
+
+<p>
+  <strong>Departmentname:</strong>
+  <%=h @department.departmentName %>
+</p>
+<p>
+  <strong>Location:</strong>
+  <%=h Location.find_by_id(@department.location_id).name %>
+</p>
+
+<p>
+  <% if (can? :edit, Department) %>
+  <%= link_to "Edit", edit_department_path(@department) %> |
+  <% end %>
+  <% if (can? :delete, Department) %>
+  <%= link_to "Destroy", @department, :confirm => 'Are you sure?', :method => :delete %> |
+      <% end %>
+  <%= link_to "View All", departments_path %>
+</p>

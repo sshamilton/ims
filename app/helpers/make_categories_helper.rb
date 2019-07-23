@@ -1,0 +1,2 @@
+module MakeCategoriesHelper
+end

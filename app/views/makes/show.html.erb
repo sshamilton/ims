@@ -1,0 +1,39 @@
+<% title "Make" %>
+<p>
+  <strong>Make:</strong>
+  <%=link_to @make.makeName, @make %>
+</p>
+
+<table>
+  <tr>
+    <th>Description</th>
+    <th>Modelname</th>
+    <th>Total</th>
+		<th>Grand Total: <%= @make.models.count %></th>
+  </tr> 
+  <% @models = @make.models.paginate :page => params[:page], :include => [ :category], :order => 'categories.categoryName,  modelName' %>
+  <% for model in @models %>
+      <tr>
+  			<td><%=link_to model.category.name, model.category %></td>
+        <td><%=link_to model.modelName, model %></td>
+        <td><%=model.items.count %></td>
+        <% if (can? :edit, Model) %>
+            <td><%= link_to "Edit", edit_model_path(model) %></td>
+        <% end %>
+        <% if (can? :delete, Model) %>
+            <td><%= link_to "Destroy", model, :confirm => 'Are you sure?', :method => :delete %></td>
+        <% end %>
+      </tr>
+  <% end %>
+</table>
+ <%= will_paginate @models %>
+
+<p>
+  <% if (can? :edit, Make) %>
+      <%= link_to "Edit", edit_make_path(@make) %> |
+  <% end %>
+  <% if (can? :edit, Make) %>
+      <%= link_to "Destroy", @make, :confirm => 'Are you sure?', :method => :delete %> |
+  <% end %>
+  <%= link_to "View All", makes_path %>
+</p>

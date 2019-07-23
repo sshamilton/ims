@@ -1,0 +1,25 @@
+<% title "Makes" %>
+
+<table>
+  <tr>
+    <th>Makes (<%= Make.all.count %>)</th>
+    <th># of Models (<%= Model.find(:all, :joins => [:make]).count %>)</th>
+
+  </tr>
+  <% for make in @makes %>
+      <tr>
+        <td><%=h link_to make.makeName, make %></td>
+	<td><%=make.models.count %>
+        <% if (can? :edit, Make) %>
+            <td><%= link_to "Edit", edit_make_path(make) %></td>
+        <% end %>
+        <% if (can? :destroy, Make) %>
+            <td><%= link_to "Destroy", make, :confirm => 'Are you sure?', :method => :delete %></td>
+        <% end %>
+      </tr>
+  <% end %>
+</table>
+<%= will_paginate @makes %>
+<% if (can? :create, Make) %>
+    <p><%= link_to "New Make", new_make_path %></p>
+<% end %>
